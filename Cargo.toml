@@ -1,0 +1,10 @@
+[package]
+name = "kawaiifi-cli"
+version = "0.1.0"
+authors = ["Zach Leytus <zach.leytus@pm.me>"]
+edition = "2018"
+
+[dependencies]
+kawaiifi = { path = "../kawaiifi" }
+crossterm = "0.17.7"
+tui = { version = "0.10", default-features = false, features = ['crossterm'] }
