@@ -218,21 +218,3 @@ impl Display for IeTableColumnHeader {
         }
     }
 }
-
-// trait IeTableRow {
-//     fn table_row(&self, headers: &[IeTableColumn]) -> Vec<String>;
-// }
-
-// impl IeTableRow for Ie {
-//     fn table_row(&self, headers: &[IeTableColumn]) -> Vec<String> {
-//         headers
-//             .iter()
-//             .map(|header| match header {
-//                 IeTableColumn::Id => self.id().to_string(),
-//                 IeTableColumn::IdExtension => "0".to_string(),
-//                 IeTableColumn::Element => self.name().to_string(),
-//                 IeTableColumn::Length => format!("{} B", self.bytes().len()),
-//             })
-//             .collect::<Vec<String>>()
-//     }
-// }
