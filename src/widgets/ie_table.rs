@@ -4,7 +4,9 @@ use tui::{
     buffer::Buffer,
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
-    widgets::{Block, Borders, ListState, Row, StatefulWidget, Table, TableState, Widget},
+    widgets::{
+        Block, Borders, List, ListItem, ListState, Row, StatefulWidget, Table, TableState, Widget,
+    },
 };
 
 pub struct IeTable {
@@ -81,17 +83,24 @@ impl StatefulWidget for IeTable {
             &mut state.table_state,
         );
 
-        Widget::render(
-            Block::default()
-                .title(if let Some(ie) = state.selected_ie() {
-                    ie.name()
-                } else {
-                    ""
-                })
-                .borders(Borders::ALL),
-            areas[1],
-            buf,
-        );
+        // Only render the list of IE fields if an IE is selected in the table
+        if let Some(ie) = state.selected_ie() {
+            let rows = ie
+                .information_fields()
+                .iter()
+                .map(|field| field.to_string())
+                .collect::<Vec<String>>();
+            let items = rows
+                .iter()
+                .map(|row| ListItem::new(row.as_str()))
+                .collect::<Vec<ListItem>>();
+
+            Widget::render(
+                List::new(items).block(Block::default().title(ie.name()).borders(Borders::ALL)),
+                areas[1],
+                buf,
+            );
+        }
     }
 }
 
