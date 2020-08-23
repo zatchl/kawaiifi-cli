@@ -273,11 +273,11 @@ impl Display for BssTableColumnHeader {
             BssTableColumnHeader::Bssid => write!(f, "BSSID"),
             BssTableColumnHeader::Ssid => write!(f, "SSID"),
             BssTableColumnHeader::Channel => write!(f, "Channel"),
-            BssTableColumnHeader::ChannelWidth => write!(f, "Channel Width"),
+            BssTableColumnHeader::ChannelWidth => write!(f, "Width"),
             BssTableColumnHeader::Band => write!(f, "Band"),
             BssTableColumnHeader::Frequency => write!(f, "Frequency"),
             BssTableColumnHeader::Signal => write!(f, "Signal"),
-            BssTableColumnHeader::WiFiProtocols => write!(f, "Wi-Fi Protocols"),
+            BssTableColumnHeader::WiFiProtocols => write!(f, "Protocols"),
             BssTableColumnHeader::Security => write!(f, "Security"),
             BssTableColumnHeader::MaxRate => write!(f, "Max Rate"),
         }
