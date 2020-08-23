@@ -118,7 +118,7 @@ fn main() -> Result<(), io::Error> {
             Err(TryRecvError::Disconnected) => break,
         }
 
-        thread::sleep(Duration::from_millis(100));
+        thread::sleep(Duration::from_millis(50));
     }
 
     disable_raw_mode().unwrap();
