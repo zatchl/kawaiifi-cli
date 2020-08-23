@@ -133,10 +133,8 @@ impl IeTableState {
         // Find the position of the previously selected IE in the new IEs
         // Save that position to the table state
         if let Some(previously_selected_ie) = previously_selected_ie {
-            self.table_state.select(
-                ies.iter()
-                    .position(|ie| ie.id() == previously_selected_ie.id()),
-            );
+            self.table_state
+                .select(ies.iter().position(|ie| ie == previously_selected_ie));
         }
 
         // Make sure that an IE is always selected
@@ -153,7 +151,7 @@ impl IeTableState {
 
     pub fn select_next(&mut self) {
         if let Some(selected) = self.table_state.selected() {
-            if self.ies.len() > selected + 1 {
+            if selected < self.ies.len() - 1 {
                 self.table_state.select(Some(selected + 1));
             }
         } else if !self.ies.is_empty() {
